@@ -14,8 +14,6 @@
         <div class="container">
             <jsp:include page="views/layout/header.jsp"/>
             <jsp:include page="views/layout/banner.jsp"/>
-            
-            
             <div id="mainContent">
                 <jsp:include page="views/layout/homeContent.jsp"/>
             </div>
