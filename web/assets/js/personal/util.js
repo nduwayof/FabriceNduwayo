@@ -12,7 +12,7 @@ function reloadHome(){
 // Load Sign up form into the content
 
 function loadSignup(){
-     $.get("/FabriceNduwayo/signup.jsp",
+     $.get("/GItTesting/signup.jsp",
        function(data){
         $('#mainContent').html(data);
 
