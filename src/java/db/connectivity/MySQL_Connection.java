@@ -5,41 +5,69 @@
  */
 package db.connectivity;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author Fabrice
  */
 public class MySQL_Connection {
     
-    private String username;
-    private String password;
-    private String database;
+    private static String username;
+    private static String password;
+    private static String database;
+    private static Connection connect;
+    
+    // Getters
 
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
-    public String getDatabase() {
+    public static String getDatabase() {
         return database;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public static Connection getConnect() {
+        return connect;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+   
+
+    //  Setters
+
+    public static void setUsername(String username) {
+        MySQL_Connection.username = username;
     }
 
-    public void setDatabase(String database) {
-        this.database = database;
+    public static void setPassword(String password) {
+        MySQL_Connection.password = password;
+    }
+
+    public static void setDatabase(String database) {
+        MySQL_Connection.database = database;
+    }
+
+    public static void setConnect(Connection connect) {
+        MySQL_Connection.connect = connect;
     }
     
     
+   public static Connection MySQL(){
+      try{
+          Class.forName("com.mysql.jdbc.Driver");
+           connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database+"?user="+username+"&password="+password+"");
+
+      }catch(Exception err){
+          err.printStackTrace();
+      }
+      return connect;
+   }
     
     
 }
